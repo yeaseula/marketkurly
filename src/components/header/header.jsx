@@ -20,8 +20,37 @@ import {Filter} from './Filter.jsx'
 import {data} from './data.js';
 
 import {useState} from "react"
+import { RiCloseLine } from "@remixicon/react";
 
 function HeaderFc(){
+
+	//Banner Close
+	const [Bannerstate, setBannerstate] = useState('show');
+	const BannerFnc = (Bannerstate,setBannerstate) => {
+		var BannerClass = setBannerstate === 'hidden' ? 'hidden' : Bannerstate;
+		return BannerClass
+	}
+
+	//Input Search
+	const [Keyword,setKeyword] = useState('');
+	const [Searchstyle,setSearchstyle] = useState('');
+
+	const InputMove = (Searchstyle,setSearchstyle) => {
+		var addClass = setSearchstyle === 'active' ? 'active' : Searchstyle
+		return addClass
+	}
+	const MainSearchFnc = (e) => {
+		e.target.value === '' ? setSearchstyle('active-n') : setSearchstyle('active') 
+		const Thisvalue = e.target.value;
+		setKeyword(Thisvalue)
+	}
+
+	const MainCloseBtn = () => {
+		setKeyword('');
+		setSearchstyle('active-n')
+	}
+
+	//Category select
 	const [selectedCategory, setSelectedCategory] = useState('vegitable');
 	const filteredList = data.filter((item)=>item.category === selectedCategory)
 
@@ -32,9 +61,15 @@ function HeaderFc(){
 	}
 	return (
 		<>
-			<div className='line_banner'>
+			<div className={`line_banner ${BannerFnc(Bannerstate,setBannerstate)}`} onClick={()=>{setBannerstate('hidden')}}>
 				<p>지금 가입하고, <span>50% 할인 쿠폰</span> 받아가세요!</p>
-				<span className='closing_btn'>X</span>
+				<span className='closing_btn'>
+				<RiCloseLine
+					size={24}
+					color="rgba(255, 255, 255, 0.8)"
+					className="closedline"
+				/>
+				</span>
 			</div>
 			<div className='header_wrap'>
 				<div className="user_menu">
@@ -59,8 +94,14 @@ function HeaderFc(){
 							<li><a href="">뷰티컬리</a></li>
 						</ul>
 						<div className="main_searchbox">
-							<input type="text" placeholder='검색어를 입력해주세요' name='search_form'/>
-							<img src={SmallClose} alt="" />
+							<input type="text" 
+							placeholder='검색어를 입력해주세요' 
+							name='search_form' 
+							value= {Keyword}
+							className='main_search_form' 
+							onChange={MainSearchFnc}/>
+							<img src={SmallClose} className={`input_close_btn ${InputMove(Searchstyle,setSearchstyle)}`}
+							onClick={MainCloseBtn}/>
 							<button className='submitbtn'><img src={SearchIcon} alt="" /></button>
 						</div>
 					</div>
@@ -134,7 +175,7 @@ function HeaderFc(){
 			</div>
 
 			<div className='Swiper_wrap'>
-				
+
 			</div>
 		</>
 	)

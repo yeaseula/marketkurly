@@ -1,43 +1,33 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/static/pretendard.css");
-
 :root {
-  line-height: 1.6;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
   font-weight: 400;
-  font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-* { color: #424242; }
-ul,li,ol {
-  list-style-type:none;
-  padding: 0;
-  margin: 0;
-}
+
 a {
   font-weight: 500;
-  color: #424242;
+  color: #646cff;
   text-decoration: inherit;
 }
-.active {
-  color: #5f0080;
-}
 a:hover {
-  color: #5f0080;
+  color: #535bf2;
 }
 
 body {
   margin: 0;
+  display: flex;
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
-}
-p {
-  padding: 0;
-  margin: 0;
 }
 
 h1 {
@@ -62,10 +52,6 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-input {
-  outline: none;
 }
 
 @media (prefers-color-scheme: light) {

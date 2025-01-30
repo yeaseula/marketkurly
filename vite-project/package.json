@@ -1,5 +1,5 @@
 {
-  "name": "webpage",
+  "name": "vite-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,8 +10,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@remixicon/react": "^4.6.0",
-    "node-sass": "^9.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
@@ -25,7 +23,6 @@
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
     "globals": "^15.14.0",
-    "sass-embedded": "^1.83.4",
     "vite": "^6.0.5"
   }
 }
