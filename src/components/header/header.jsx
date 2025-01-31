@@ -173,10 +173,6 @@ function HeaderFc(){
 					</div>
 				</div>
 			</div>
-
-			<div className='Swiper_wrap'>
-
-			</div>
 		</>
 	)
 }

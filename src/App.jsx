@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import HeaderFc from './components/header/header.jsx'
+import SwiperMain from './components/main/Swiper.jsx'
 import FooterFc from './components/footer/footer'
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   return (
     <div className='root_in'>
     <HeaderFc/>
+    <SwiperMain />
     <FooterFc/>
     </div>
   )
