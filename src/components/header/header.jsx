@@ -17,7 +17,7 @@ import './Filter.scss'
 
 import {List} from './List.jsx'
 import {Filter} from './Filter.jsx'
-import {data} from './data.js';
+import {categoryDepth} from './categoryDepth.js';
 
 import {useState} from "react"
 import { RiCloseLine } from "@remixicon/react";
@@ -52,7 +52,7 @@ function HeaderFc(){
 
 	//Category select
 	const [selectedCategory, setSelectedCategory] = useState('vegitable');
-	const filteredList = data.filter((item)=>item.category === selectedCategory)
+	const filteredList = categoryDepth.filter((item)=>item.category === selectedCategory)
 
 	const [Cate,setCate] = useState('category_filter');
 	const CategoryStatement = (Cate,setCate) => {

@@ -31,7 +31,7 @@ function SwiperMain () {
         {
             imagelist.map((a,i)=>{
                 return (
-                    <SwiperSlide>
+                    <SwiperSlide key={a.id}>
                         <SwiperIndi imagelist={imagelist[i]}></SwiperIndi>
                     </SwiperSlide>
                 )

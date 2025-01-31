@@ -1,0 +1,26 @@
+export const icondata = [
+    {
+        id:1,
+        normalsrc:'icon1',
+        colorsrc:'icon1-color',
+        extension:'.png'
+    },
+    {
+        id:2,
+        normalsrc:'icon2',
+        colorsrc:'icon2-color',
+        extension:'.png'
+    },
+    {
+        id:3,
+        normalsrc:'icon3',
+        colorsrc:'icon3-color',
+        extension:'.png'
+    },
+    {
+        id:4,
+        normalsrc:'icon4',
+        colorsrc:'icon4-color',
+        extension:'.png'
+    }
+]

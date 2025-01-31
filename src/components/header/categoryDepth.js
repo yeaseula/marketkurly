@@ -1,4 +1,4 @@
-export const data = [
+export const categoryDepth = [
     {
         id: 1,
         category: "vegitable",
