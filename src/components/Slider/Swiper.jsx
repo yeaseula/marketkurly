@@ -26,7 +26,7 @@ function SwiperMain () {
             disableOnInteraction: false,
         }}
         loop={true}
-        className="mySwiper"
+        className="mainswiper"
         >
         {
             imagelist.map((a,i)=>{

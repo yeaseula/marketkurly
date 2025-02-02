@@ -61,14 +61,14 @@ function HeaderFc(){
 	}
 	return (
 		<>
-			<div className={`line_banner ${BannerFnc(Bannerstate,setBannerstate)}`} onClick={()=>{setBannerstate('hidden')}}>
+			<div className={`line_banner ${BannerFnc(Bannerstate,setBannerstate)}`}>
 				<p>지금 가입하고, <span>50% 할인 쿠폰</span> 받아가세요!</p>
-				<span className='closing_btn'>
-				<RiCloseLine
-					size={24}
-					color="rgba(255, 255, 255, 0.8)"
-					className="closedline"
-				/>
+				<span className='closing_btn' onClick={()=>{setBannerstate('hidden')}}>
+					<RiCloseLine
+						size={24}
+						color="rgba(255, 255, 255, 0.8)"
+						className="closedline"
+					/>
 				</span>
 			</div>
 			<div className='header_wrap'>

@@ -4,7 +4,8 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import HeaderFc from './components/header/header.jsx'
-import SwiperMain from './components/main/Swiper.jsx'
+import SwiperMain from './components/Slider/Swiper.jsx'
+import MainContents from './components/main/Main.jsx'
 import FooterFc from './components/footer/footer'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <div className='root_in'>
     <HeaderFc/>
     <SwiperMain />
+    <MainContents />
     <FooterFc/>
     </div>
   )
