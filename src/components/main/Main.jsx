@@ -3,10 +3,11 @@ import './Main.scss'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 //data
 import { maindata } from './maindata.js'
+import { LowPrice } from './maindata.js'
 
 // Import Swiper styles
 import 'swiper/css';
@@ -21,9 +22,11 @@ import {RiShoppingCartLine} from '@remixicon/react'
 
 function MainContents () {
     let [maindata1] = useState(maindata) // section1
+    let [lowPrice] = useState(LowPrice) // section2
     const prevRef = useRef(null);
     const nextRef = useRef(null);
     return (
+        <>
         <section id="section1" className="section">
             <TitleSection1 />
             <div className='Swiper_wrap'>
@@ -52,10 +55,10 @@ function MainContents () {
                     className="section1Swiper"
                     >
                     {
-                        maindata1.map((a,i)=>{
+                        maindata1.map((it,i)=>{
                             return (
-                                <SwiperSlide key={a.id}>
-                                    <Item1 maindata1={maindata1[i]}></Item1>
+                                <SwiperSlide key={it.id}>
+                                    <Item1 key={it.id} {...it}></Item1>
                                 </SwiperSlide>
                             )
                         })
@@ -73,6 +76,21 @@ function MainContents () {
                 </div>
             </div>
         </section>
+        <section id="section2" className='section'>
+            <div className='section_inner_flex'>
+                <TitleSection2 />
+                <div className="item">
+                {
+                    lowPrice.map((it,i)=>{
+                        return (
+                            <Item1 key={it.id} {...it}/>
+                        )
+                    })
+                }
+                </div>
+            </div>
+        </section>
+        </>
     )
 }
 
@@ -91,45 +109,169 @@ function TitleSection1(){
         </div>
     )
 }
+function TitleSection2(){
+    const [time, setTime] = useState(new Date());
 
-function Item1(props){
-    let Coupon1on = props.maindata1.Coupon === true ? 'on' : '';
-    let Coupon2on = props.maindata1.Coupon2 === true ? 'on' : '';
-    let OriginPrice = props.maindata1.originPrice.toLocaleString();
-    let totalPrice = props.maindata1.originPrice - (props.maindata1.originPrice * (props.maindata1.salePer / 100));
-    let totalPrice2 = totalPrice.toLocaleString();
+    let Today = new Date()
+
+    let Tomorrow = new Date();
+    Tomorrow.setDate(Today.getDate() + 1);
+    Tomorrow.setHours(0)
+    Tomorrow.setMinutes(59)
+    Tomorrow.setSeconds(59)
+
+    let TodaySeconds = Today.getTime()
+    let TomorrowSeconds = Tomorrow.getTime()
+    let CountReady = (TomorrowSeconds - TodaySeconds) / 1000
+
+
+	if (CountReady < 61) {
+        return '00:' + addZero(CountReady)
+	}
+
+	var hours = Math.floor(CountReady/3600)
+	var mins = Math.floor((CountReady - hours*3600)/60)
+	var secs = CountReady - hours*3600 - mins*60
+	var Countdown = addZero(hours) + ' : ' + addZero(mins) + ' : ' + addZero(secs)
+    
+	function addZero(num) {
+		return ((num < 10) ? '0' : '') + num
+	}
+
+    useEffect(() => {
+        const count = setInterval(() => {
+            setTime(new Date());
+        }, 1000);
+        return (() => clearInterval(count))}, []);
     return (
         <div>
-            <div className='img_box'>
-                <span className={`saletag ${Coupon1on}`}>+ 15% 쿠폰</span>
-                <img src="/maindata/flag2.png" className={`coupone2 ${Coupon2on}`}/>
-                <img src={props.maindata1.imgsrc} className='product_img' />
-            </div>
-            <div className='cart_btn'>
-                <RiShoppingCartLine
-                    size={16}
-                    color='#424242'
-                    className='carticon'
-                />
-                <span>담기</span>
-            </div>
-            <div className='contents_box'>
-                <p className='item_title'>{props.maindata1.title}</p>
-                <p className='origin_price'>{OriginPrice}원</p>
-                <div className='real_price'>
-                    <span className='saletag'>{props.maindata1.salePer}%</span>
-                    <span className='total_price'>{totalPrice2}원~</span>
+            <a href='#' className='section_title'>
+                <span>✨최저가 도전!</span>
+            </a>
+            <div className="setTime">
+                <div className="clock_icon">
+                    <div className="bar_fix"></div>
+                    <div className="bar">
+                        <div>
+                            <div className="bar_fix"></div>
+                            <div className="bar_move"></div>
+                        </div>
+                    </div>
                 </div>
-                <p className='comment_count'>
-                    <RiMessage3Line
-                        size={16}
-                        color="rgb(167, 178, 188)"
-                        className="messageicon"
-                    />
-                    <span>{props.maindata1.Comment}</span>
-                </p>
+                {Countdown}
+            </div>
+            <p className='section_title_sub2'>망설이면 늦어요!</p>
+        </div>
+    )
+}
+
+function Item1(props){
+
+    var CategoryType = props.category
+    if(CategoryType === 'maindata') {
+        var CouponText = '+ 15% 쿠폰'
+    } else if(CategoryType === 'lowprice') {
+        var CouponText = '주말 특가'
+    }
+
+    let Coupon1on = props.Coupon === true ? 'on' : ''
+    let Coupon2on = props.Coupon2 === true ? 'on' : ''
+
+    let ImgRoot =props.imgsrc
+    let Descript = props.descript
+    let SalePer = props.salePer
+    let Title = props.title 
+    let OriginPrice = props.originPrice.toLocaleString()
+    let totalPrice = Math.round(props.originPrice - (props.originPrice * (SalePer / 100)));
+    let totalPrice2 = totalPrice.toLocaleString();
+
+
+    return (
+        <div>
+            <ImgBox
+            Coupon1on={Coupon1on} Coupon2on={Coupon2on} CouponText={CouponText} ImgRoot={ImgRoot}
+            />
+            <CartBtn />
+            <div className='contents_box'>
+
+                <PriceType CategoryType={CategoryType} Title={Title} Descript={Descript} OriginPrice={OriginPrice} totalPrice2={totalPrice2} SalePer={SalePer}/>
+
+                <Comment props={props}/>
             </div>
         </div>
+    )
+}
+
+
+//common
+const ImgBox = ({Coupon1on,Coupon2on,CouponText,ImgRoot}) => {
+    return (
+        <div className='img_box'>
+            <span className={`saletag ${Coupon1on}`}>{CouponText}</span>
+            <img src="/maindata/flag2.png" className={`coupone2 ${Coupon2on}`}/>
+            <img src={ImgRoot} className='product_img' />
+        </div>
+    )
+}
+
+const CartBtn = () => {
+    return (
+        <div className='cart_btn'>
+            <RiShoppingCartLine
+                size={16}
+                color='#424242'
+                className='carticon'
+            />
+            <span>담기</span>
+        </div>
+    )
+}
+
+const PriceType = ({CategoryType,Title,Descript,SalePer,OriginPrice,totalPrice2}) => {
+    if(CategoryType === 'maindata') {
+        return PriceType1({Title,SalePer,OriginPrice,totalPrice2})
+    } else if(CategoryType === 'lowprice') {
+        return PriceType2({Title,Descript,SalePer,OriginPrice,totalPrice2})
+    }
+}
+
+const PriceType1 = ({Title,SalePer,OriginPrice,totalPrice2}) => {
+    return (
+        <>
+            <p className='item_title'>{Title}</p>
+            <p className='origin_price'>{OriginPrice}원</p>
+            <div className='real_price'>
+                <span className='saletag'>{SalePer}%</span>
+                <span className='total_price'>{totalPrice2}원~</span>
+            </div>
+        </>
+    )
+}
+
+const PriceType2 = ({Title,Descript,SalePer,OriginPrice,totalPrice2}) =>{
+    return (
+        <>
+            <p className='item_descript'>{Descript}</p>
+            <p className='item_title'>{Title}</p>
+            <div className='real_price'>
+                <span className='saletag'>{SalePer}%</span>
+                <span className='total_price'>{totalPrice2}원~</span>
+                <span className='origin_price'>{OriginPrice}원</span>
+            </div>
+        </>
+    )
+}
+
+function Comment({props}) {
+    return (
+        <p className='comment_count'>
+            <RiMessage3Line
+                size={16}
+                color="rgb(167, 178, 188)"
+                className="messageicon"
+            />
+            <span>{props.Comment}</span>
+        </p>
     )
 }
 

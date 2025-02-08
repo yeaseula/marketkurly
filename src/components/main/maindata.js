@@ -1,6 +1,7 @@
 export const maindata = [
     {
         id:1,
+        category:'maindata',
         title:"[Kim's butcher] 호주산 소고기 샤브샤브 500g(냉동)",
         imgsrc:'/maindata/section1img1.jpg',
         originPrice:14900,
@@ -11,6 +12,7 @@ export const maindata = [
     },
     {
         id:2,
+        category:'maindata',
         title:"김치듬뿍 한돈 제육볶음",
         imgsrc:'/maindata/section1img2.jpg',
         originPrice:12900,
@@ -21,6 +23,7 @@ export const maindata = [
     },
     {
         id:3,
+        category:'maindata',
         title:"[KF365] 에어프라이어용 생선까스 (리뉴얼)",
         imgsrc:'/maindata/section1img3.jpg',
         originPrice:13500,
@@ -31,6 +34,7 @@ export const maindata = [
     },
     {
         id:4,
+        category:'maindata',
         title:"[KF365] 한돈 부위별 대용량 가성비 7종",
         imgsrc:'/maindata/section1img4.jpg',
         originPrice:28900,
@@ -41,6 +45,7 @@ export const maindata = [
     },
     {
         id:5,
+        category:'maindata',
         title:"[홍익궁중전통] 육개장 (2인분)",
         imgsrc:'/maindata/section1img5.jpg',
         originPrice:10800,
@@ -51,6 +56,7 @@ export const maindata = [
     },
     {
         id:6,
+        category:'maindata',
         title:"코카콜라 제로 1.5L",
         imgsrc:'/maindata/section1img6.jpg',
         originPrice:3180,
@@ -61,6 +67,7 @@ export const maindata = [
     },
     {
         id:7,
+        category:'maindata',
         title:"[KF365] 서울식 소불고기 600g(냉동)",
         imgsrc:'/maindata/section1img7.jpg',
         originPrice:14000,
@@ -71,6 +78,7 @@ export const maindata = [
     },
     {
         id:8,
+        category:'maindata',
         title:"[바름] 영암 친환경 꿀고구마 1.5kg",
         imgsrc:'/maindata/section1img8.jpg',
         originPrice:8990,
@@ -81,6 +89,7 @@ export const maindata = [
     },
     {
         id:9,
+        category:'maindata',
         title:"[KF365] 간편한 6가지 해물 모듬",
         imgsrc:'/maindata/section1img9.jpg',
         originPrice:8900,
@@ -91,6 +100,7 @@ export const maindata = [
     },
     {
         id:10,
+        category:'maindata',
         title:"코카콜라 제로 (250mL X 6캔)",
         imgsrc:'/maindata/section1img10.jpg',
         originPrice:7580,
@@ -101,6 +111,7 @@ export const maindata = [
     },
     {
         id:11,
+        category:'maindata',
         title:"[KF365] 훈제오리 2종 (2입)",
         imgsrc:'/maindata/section1img11.jpg',
         originPrice:10500,
@@ -111,6 +122,7 @@ export const maindata = [
     },
     {
         id:12,
+        category:'maindata',
         title:"[고메공방] 계란빵 2종 (5개입) (택1)",
         imgsrc:'/maindata/section1img12.jpg',
         originPrice:12500,
@@ -121,6 +133,7 @@ export const maindata = [
     },
     {
         id:13,
+        category:'maindata',
         title:"[압구정주꾸미] 주꾸미 볶음 2종 (택1)",
         imgsrc:'/maindata/section1img13.jpg',
         originPrice:8900,
@@ -131,6 +144,7 @@ export const maindata = [
     },
     {
         id:14,
+        category:'maindata',
         title:"[어반다이닝] 바지락 술찜 파스타",
         imgsrc:'/maindata/section1img14.jpg',
         originPrice:12900,
@@ -141,6 +155,7 @@ export const maindata = [
     },
     {
         id:15,
+        category:'maindata',
         title:"[매일] 바이오 요거트 파르페 아이스크림 220mL X 4개입",
         imgsrc:'/maindata/section1img15.jpg',
         originPrice:14000,
@@ -151,6 +166,7 @@ export const maindata = [
     },
     {
         id:16,
+        category:'maindata',
         title:"[투다리] 인기 밀키트 4종 골라담기 (택1)",
         imgsrc:'/maindata/section1img16.jpg',
         originPrice:14900,
@@ -161,10 +177,26 @@ export const maindata = [
     }
 ]
 
+export const LowPrice = [
+    {
+        id:1,
+        category:'lowprice',
+        descript: "20% 단독쿠폰!! 세계 최초 100% 트라이탄 밀폐용기",
+        title:"[고트만] 1+1 크리스탈락 트라이탄 밀폐용기",
+        imgsrc:'/maindata/lowPrice.jpg',
+        originPrice:32000,
+        salePer:33,
+        Comment:'168',
+        Coupon:true,
+        Coupon2:false
+    },
+]
+
 export const mainranking = [
     {
         id:1,
-        title:"[KF365] 1+ 한우 국거리 300g(냉장장)",
+        category:'mainranking',
+        title:"[KF365] 1+ 한우 국거리 300g(냉장)",
         imgsrc:'/maindata_ranking/ranking1.jpg',
         TotalPrice:12720,
         salePer:20,
@@ -173,6 +205,7 @@ export const mainranking = [
     },
     {
         id:2,
+        category:'mainranking',
         title:"[정지선의 티엔미미] 티엔미미 인기 면요리 4종 (택1)",
         imgsrc:'/maindata_ranking/ranking2.jpg',
         TotalPrice:5925,
@@ -182,6 +215,7 @@ export const mainranking = [
     },
     {
         id:3,
+        category:'mainranking',
         title:"[오봉집] 낙지볶음 2종(냉동)",
         imgsrc:'/maindata_ranking/ranking3.jpg',
         TotalPrice:6990,
@@ -191,6 +225,7 @@ export const mainranking = [
     },
     {
         id:4,
+        category:'mainranking',
         title:"[이연복의 목란] 짜장면 2인분",
         imgsrc:'/maindata_ranking/ranking4.jpg',
         TotalPrice:7984,
@@ -200,6 +235,7 @@ export const mainranking = [
     },
     {
         id:5,
+        category:'mainranking',
         title:"[자연실록] 닭가슴살 큐브스테이크 4종",
         imgsrc:'/maindata_ranking/ranking4.jpg',
         TotalPrice:6650,
